@@ -1,7 +1,7 @@
+using TMPro;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using TMPro;
 
 public class UnitRuntime : MonoBehaviour
 {
@@ -21,6 +21,8 @@ public class UnitRuntime : MonoBehaviour
 
     private static int _seq = 0;
     public int instanceId;
+    private LineRenderer lr;
+    private Color baseColor;
 
     // per evitare Find ogni volta
     [HideInInspector] public TextMeshPro labelTmp;
@@ -95,4 +97,35 @@ public class UnitRuntime : MonoBehaviour
         Debug.Log($"[LONG] {displayName}#{instanceId} slot={slotKey}");
     }
 
+
+    void Start()
+    {
+        lr = GetComponent<LineRenderer>();
+        if (lr != null) baseColor = lr.startColor;
+    }
+
+    public void SetHover(bool on)
+    {
+        if (lr == null) return;
+
+        if (on)
+        {
+            var c = new Color(1f, 0.9f, 0.2f, 1f);
+            lr.startColor = c; lr.endColor = c;
+        }
+        else
+        {
+            lr.startColor = baseColor; lr.endColor = baseColor;
+        }
+    }
+
+    void EnsureCollider(float radius = 1f)
+    {
+        var cc = GetComponent<CircleCollider2D>();
+        if (cc == null) cc = gameObject.AddComponent<CircleCollider2D>();
+        cc.isTrigger = true;
+        cc.radius = radius;
+    }
+
 }
+
