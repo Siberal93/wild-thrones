@@ -1,0 +1,28 @@
+# Plastic SCM
+.plastic/
+ignore.conf
+
+# IDE / solution
+*.sln
+*.slnx
+*.csproj
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+.vscode/
+.vs/
+.idea/
+
+# Unity generated
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+
+# Unity UI schema (generated)
+UIElementsSchema/

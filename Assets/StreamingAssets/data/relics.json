@@ -1,0 +1,118 @@
+{
+  "relics": [
+    {
+      "id": "rel_torn_banner",
+      "name": "Bandiera Strappata",
+      "effects": [
+        {
+          "trigger": "FIRST_COMMAND_EACH_COMBAT",
+          "type": "GAIN_SHIELD",
+          "pattern": "ALLY_TEAM",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "rel_march_drum",
+      "name": "Tamburo di Marcia",
+      "effects": [
+        {
+          "trigger": "RELOAD",
+          "type": "RELOAD_BONUS",
+          "value": 1,
+          "note": "peschi +1 nella ricarica successiva"
+        }
+      ]
+    },
+    {
+      "id": "rel_briar_charm",
+      "name": "Talismano del Rovo",
+      "effects": [
+        {
+          "trigger": "ALWAYS",
+          "type": "APPLY_STATUS",
+          "pattern": "ALLY_BACK_ROW",
+          "status": "RESIST",
+          "value": 50,
+          "params": { "element": "EARTH" }
+        }
+      ]
+    },
+    {
+      "id": "rel_bandit_mask",
+      "name": "Maschera del Brigante",
+      "effects": [
+        {
+          "trigger": "FIRST_DODGE_APPLIED_EACH_COMBAT",
+          "type": "APPLY_STATUS",
+          "target": "SAME_TARGET",
+          "status": "SPRINT",
+          "value": 1,
+          "durationTurns": 1
+        }
+      ]
+    },
+    {
+      "id": "rel_black_vial",
+      "name": "Fiala Nera",
+      "effects": [
+        {
+          "trigger": "APPLY_POISON",
+          "type": "MODIFY_STATUS",
+          "status": "POISON",
+          "deltaDuration": 1
+        }
+      ]
+    },
+    {
+      "id": "rel_profane_crest",
+      "name": "Stemma Profanato",
+      "effects": [
+        {
+          "trigger": "DEAL_DAMAGE",
+          "type": "BONUS_DAMAGE",
+          "damageType": "PHYSICAL_BLUNT",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "rel_stolen_map",
+      "name": "Mappa Rubata",
+      "effects": [
+        { "trigger": "ACT_START", "type": "ADD_SECRET_NODES", "value": 2 }
+      ]
+    },
+    {
+      "id": "rel_shadow_claw",
+      "name": "Artiglio d’Ombra",
+      "effects": [
+        {
+          "trigger": "FIRST_WEAKNESS_APPLIED_EACH_COMBAT",
+          "type": "MODIFY_STATUS",
+          "status": "WEAKNESS",
+          "deltaDuration": 1
+        }
+      ]
+    },
+    {
+      "id": "rel_cove_key",
+      "name": "Chiave del Covo",
+      "effects": [{ "trigger": "COMBAT_END", "type": "GAIN_HONOR", "value": 1 }]
+    },
+    {
+      "id": "rel_war_horn",
+      "name": "Corno da Battaglia",
+      "effects": [
+        {
+          "trigger": "FIRST_SUMMON_EACH_COMBAT",
+          "type": "APPLY_STATUS",
+          "target": "SUMMONED_UNIT",
+          "status": "ATK_UP",
+          "value": 1,
+          "durationTurns": 99
+        }
+      ]
+    }
+  ]
+}

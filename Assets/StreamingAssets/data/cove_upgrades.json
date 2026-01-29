@@ -1,0 +1,48 @@
+{
+  "upgrades": [
+    {
+      "id": "cove_field_infirmary",
+      "name": "Infermeria da Campo",
+      "costHonor": 3,
+      "effects": [
+        { "trigger": "RUN_START", "type": "MOD_COMMANDER_HP", "value": 10 }
+      ]
+    },
+    {
+      "id": "cove_stolen_armory",
+      "name": "Armeria Rubata",
+      "costHonor": 3,
+      "effects": [
+        {
+          "trigger": "FIRST_EQUIP_PURCHASE_EACH_RUN",
+          "type": "DISCOUNT",
+          "value": 0.3
+        }
+      ]
+    },
+    {
+      "id": "cove_contact_network",
+      "name": "Banca di Contatti",
+      "costHonor": 4,
+      "effects": [
+        { "trigger": "RECRUIT_CHOICE", "type": "INCREASE_OPTIONS", "value": 1 }
+      ]
+    },
+    {
+      "id": "cove_bounty_board",
+      "name": "Tavolo delle Taglie",
+      "costHonor": 4,
+      "effects": [
+        { "trigger": "ACT_SETUP", "type": "ADD_ELITE_NODE", "value": 1 }
+      ]
+    },
+    {
+      "id": "cove_planning_room",
+      "name": "Sala Pianificazione",
+      "costHonor": 5,
+      "effects": [
+        { "trigger": "ACT_START", "type": "MAP_REVEAL_AHEAD", "value": 2 }
+      ]
+    }
+  ]
+}

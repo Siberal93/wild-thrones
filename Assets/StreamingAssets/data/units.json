@@ -1,0 +1,407 @@
+{
+  "units": [
+    {
+      "id": "unit_commander_zanna_grigia",
+      "name": "Zanna Grigia",
+      "faction": "ALLY",
+      "role": "COMMANDER",
+      "animal": "WOLF",
+      "traits": [],
+      "stats": { "hp": 32, "shield": 0, "cdBase": 4 },
+      "attack": {
+        "pattern": "SINGLE",
+        "damage": 6,
+        "damageType": "PHYSICAL_SLASH",
+        "onHit": []
+      },
+      "passives": [
+        {
+          "id": "pass_lonewolf",
+          "trigger": "TURN_START",
+          "condition": "IS_ONLY_ALLY_IN_FRONT_IN_COLUMN",
+          "effects": [
+            { "type": "MOD_ATTACK_TEMP", "value": 2, "durationTurns": 1 },
+            {
+              "type": "APPLY_STATUS",
+              "status": "SPRINT",
+              "value": 1,
+              "durationTurns": 1
+            }
+          ]
+        }
+      ],
+      "oncePerCombatPowers": [
+        {
+          "id": "power_pack_tactics",
+          "name": "Tattiche di Branco",
+          "kind": "TACTIC",
+          "beats": 0,
+          "target": { "type": "COLUMN" },
+          "effects": [
+            {
+              "type": "APPLY_TRAIT_TEMP",
+              "trait": "RAPIDO",
+              "pattern": "ALLIES_IN_COLUMN",
+              "durationActions": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit_rebel_grunt",
+      "name": "Gregario Ribelle",
+      "faction": "ALLY",
+      "role": "SUMMON",
+      "animal": "MISC",
+      "traits": [],
+      "stats": { "hp": 2, "shield": 0, "cdBase": 3 },
+      "attack": {
+        "pattern": "SINGLE",
+        "damage": 1,
+        "damageType": "PHYSICAL_SLASH",
+        "onHit": []
+      }
+    },
+    {
+      "id": "unit_cucciolo_scout",
+      "name": "Cucciolo Lupo (Scout)",
+      "faction": "ENEMY",
+      "role": "MINION",
+      "animal": "WOLF",
+      "traits": ["RAPIDO"],
+      "stats": { "hp": 10, "shield": 0, "cdBase": 3 },
+      "attack": {
+        "pattern": "SINGLE",
+        "damage": 3,
+        "damageType": "PHYSICAL_SLASH",
+        "onHit": [
+          {
+            "chance": 0.5,
+            "effect": {
+              "type": "APPLY_STATUS",
+              "status": "SLOW",
+              "value": 1,
+              "durationTurns": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unit_corvo_araldo",
+      "name": "Corvo Araldo",
+      "faction": "ENEMY",
+      "role": "MINION",
+      "animal": "RAVEN",
+      "traits": ["RAPIDO"],
+      "stats": { "hp": 8, "shield": 0, "cdBase": 2 },
+      "attack": {
+        "pattern": "SINGLE",
+        "damage": 2,
+        "damageType": "PHYSICAL_PIERCE",
+        "onHit": [
+          {
+            "chance": 1.0,
+            "effect": {
+              "type": "APPLY_STATUS",
+              "status": "WEAKNESS",
+              "value": 25,
+              "durationTurns": 2,
+              "params": { "element": "RANDOM_FIRE_OR_EARTH" }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unit_serpente_rovo",
+      "name": "Serpente del Rovo",
+      "faction": "ENEMY",
+      "role": "MINION",
+      "animal": "SNAKE",
+      "traits": [],
+      "stats": { "hp": 12, "shield": 0, "cdBase": 3 },
+      "attack": {
+        "pattern": "SINGLE",
+        "damage": 1,
+        "damageType": "PHYSICAL_PIERCE",
+        "onHit": [
+          {
+            "chance": 1.0,
+            "effect": {
+              "type": "APPLY_STATUS",
+              "status": "POISON",
+              "value": 4,
+              "durationTurns": 4
+            }
+          }
+        ],
+        "targeting": { "prefer": "ALLY_BACK_ROW" }
+      }
+    },
+    {
+      "id": "unit_cinghiale_guardia",
+      "name": "Cinghiale Guardia",
+      "faction": "ENEMY",
+      "role": "MINION",
+      "animal": "BOAR",
+      "traits": [],
+      "stats": { "hp": 18, "shield": 0, "cdBase": 4 },
+      "attack": {
+        "pattern": "SINGLE",
+        "damage": 5,
+        "damageType": "PHYSICAL_BLUNT",
+        "onHit": []
+      },
+      "passives": [
+        {
+          "id": "pass_frontliner",
+          "trigger": "SPAWN",
+          "effects": [{ "type": "PREFER_ROW", "row": "FRONT" }]
+        },
+        {
+          "id": "pass_wave_synergy",
+          "trigger": "ENEMY_SPAWNS",
+          "effects": [
+            { "type": "GAIN_SHIELD", "value": 2, "condition": "SELF_IN_FRONT" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit_cervo_sentinella",
+      "name": "Cervo Sentinella",
+      "faction": "ENEMY",
+      "role": "MINION",
+      "animal": "DEER",
+      "traits": [],
+      "stats": { "hp": 14, "shield": 0, "cdBase": 3 },
+      "attack": {
+        "pattern": "COLUMN",
+        "damage": 3,
+        "damageType": "PHYSICAL_PIERCE",
+        "onHit": [
+          {
+            "chance": 1.0,
+            "effect": {
+              "type": "GAIN_SHIELD",
+              "value": 3,
+              "condition": "HIT_TARGET_IN_FRONT"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "unit_tasso_scavatore",
+      "name": "Tasso Scavatore",
+      "faction": "ENEMY",
+      "role": "MINION",
+      "animal": "BADGER",
+      "traits": [],
+      "stats": { "hp": 16, "shield": 0, "cdBase": 4 },
+      "attack": {
+        "pattern": "SINGLE",
+        "damage": 4,
+        "damageType": "PHYSICAL_BLUNT",
+        "onHit": []
+      },
+      "passives": [
+        {
+          "id": "pass_burrow_shift",
+          "trigger": "BEFORE_ACT",
+          "effects": [
+            { "type": "SHIFT_SELF_COLUMN", "mode": "RANDOM_IF_POSSIBLE" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit_elite_zanna_rossa",
+      "name": "Zanna Rossa, Sergente Lupo",
+      "faction": "ENEMY",
+      "role": "ELITE",
+      "animal": "WOLF",
+      "traits": ["RAPIDO"],
+      "stats": { "hp": 45, "shield": 0, "cdBase": 3 },
+      "attack": {
+        "pattern": "ROW",
+        "damage": 6,
+        "damageType": "PHYSICAL_SLASH",
+        "onHit": []
+      },
+      "passives": [
+        {
+          "id": "pass_give_rapid_on_spawn",
+          "trigger": "SPAWN",
+          "effects": [
+            {
+              "type": "APPLY_TRAIT_TEMP",
+              "trait": "RAPIDO",
+              "target": "RANDOM_ENEMY",
+              "durationActions": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit_boss_tasso_ferronero",
+      "name": "Tasso Ferronero, Capitano delle Guardie",
+      "faction": "ENEMY",
+      "role": "BOSS",
+      "animal": "BADGER",
+      "traits": [],
+      "stats": { "hp": 70, "shield": 0, "cdBase": 4 },
+      "attack": {
+        "pattern": "SINGLE",
+        "damage": 7,
+        "damageType": "PHYSICAL_BLUNT",
+        "onHit": []
+      },
+      "passives": [
+        {
+          "id": "pass_entry_discipline",
+          "trigger": "SPAWN",
+          "effects": [
+            { "type": "GAIN_SHIELD", "pattern": "ENEMY_TEAM", "value": 4 }
+          ]
+        }
+      ],
+      "specials": [
+        {
+          "id": "spec_whistle",
+          "name": "Fischio di Richiamo",
+          "trigger": "ON_ALTERNATE_ACT",
+          "effects": [
+            { "type": "REDUCE_CD", "target": "ENEMY_HIGHEST_CD", "value": 1 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit_unique_tasso_tagliagole",
+      "name": "Tasso Tagliagole (Unico)",
+      "faction": "ENEMY",
+      "role": "UNIQUE",
+      "animal": "BADGER",
+      "traits": ["RAPIDO"],
+      "stats": { "hp": 22, "shield": 0, "cdBase": 3 },
+      "attack": {
+        "pattern": "SINGLE",
+        "damage": 5,
+        "damageType": "PHYSICAL_SLASH",
+        "onHit": [
+          {
+            "chance": 1.0,
+            "effect": {
+              "type": "APPLY_STATUS",
+              "status": "DODGE",
+              "value": 1,
+              "durationHits": 1,
+              "target": "SELF",
+              "condition": "AFTER_ACT"
+            }
+          }
+        ]
+      },
+      "passives": [
+        {
+          "id": "pass_ambush_entry",
+          "trigger": "SPAWN",
+          "effects": [
+            {
+              "type": "APPLY_STATUS",
+              "status": "ATK_UP",
+              "value": 2,
+              "durationActions": 1,
+              "target": "SELF"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit_unique_cervo_stregato",
+      "name": "Cervo Stregato (Unico)",
+      "faction": "ENEMY",
+      "role": "UNIQUE",
+      "animal": "DEER",
+      "traits": [],
+      "stats": { "hp": 26, "shield": 4, "cdBase": 4 },
+      "attack": {
+        "pattern": "COLUMN",
+        "damage": 4,
+        "damageType": "PHYSICAL_PIERCE",
+        "onHit": [
+          {
+            "chance": 1.0,
+            "effect": {
+              "type": "APPLY_STATUS",
+              "status": "SLOW",
+              "value": 1,
+              "durationTurns": 1
+            }
+          }
+        ]
+      },
+      "passives": [
+        {
+          "id": "pass_bark_guard",
+          "trigger": "TURN_START",
+          "effects": [
+            {
+              "type": "GAIN_SHIELD",
+              "value": 2,
+              "target": "ENEMY_RANDOM",
+              "condition": "ENEMY_EXISTS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit_unique_corvo_inquisitore",
+      "name": "Corvo Inquisitore (Unico)",
+      "faction": "ENEMY",
+      "role": "UNIQUE",
+      "animal": "RAVEN",
+      "traits": ["RAPIDO"],
+      "stats": { "hp": 18, "shield": 0, "cdBase": 2 },
+      "attack": {
+        "pattern": "SINGLE",
+        "damage": 3,
+        "damageType": "PHYSICAL_PIERCE",
+        "onHit": [
+          {
+            "chance": 1.0,
+            "effect": {
+              "type": "APPLY_STATUS",
+              "status": "WEAKNESS",
+              "value": 25,
+              "durationTurns": 2,
+              "params": { "element": "RANDOM_FIRE_OR_EARTH" }
+            }
+          }
+        ]
+      },
+      "passives": [
+        {
+          "id": "pass_mark_on_entry",
+          "trigger": "SPAWN",
+          "effects": [
+            {
+              "type": "APPLY_STATUS",
+              "status": "WEAKNESS",
+              "value": 25,
+              "durationTurns": 1,
+              "target": "ALLY_RANDOM",
+              "params": { "element": "EARTH" }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

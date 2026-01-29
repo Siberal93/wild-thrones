@@ -1,0 +1,618 @@
+{
+  "starterDecks": [
+    {
+      "id": "starter_pack_assault",
+      "name": "Branco d’Assalto",
+      "cards": [
+        "card_row_slash",
+        "card_row_slash",
+        "card_col_pierce",
+        "card_col_pierce",
+        "card_march_order",
+        "card_march_order",
+        "card_blunt_strike",
+        "card_flaming_slash",
+        "card_quick_parry",
+        "card_quick_parry",
+        "card_swap_allies",
+        "card_smoke_dodge"
+      ]
+    },
+    {
+      "id": "starter_pack_lonewolf",
+      "name": "Lupo Solitario",
+      "cards": [
+        "card_blunt_strike",
+        "card_blunt_strike",
+        "card_march_order",
+        "card_march_order",
+        "card_flaming_slash",
+        "card_flaming_slash",
+        "card_coordinated_assault",
+        "card_col_pierce",
+        "card_quick_parry",
+        "card_quick_parry",
+        "card_lonewolf_focus",
+        "card_hook_pull"
+      ]
+    },
+    {
+      "id": "starter_pack_trapper",
+      "name": "Predatore di Trappole",
+      "cards": [
+        "card_col_pierce",
+        "card_col_pierce",
+        "card_march_order",
+        "card_march_order",
+        "card_vine_column",
+        "card_vine_column",
+        "card_coordinated_assault",
+        "card_row_slash",
+        "card_column_trap",
+        "card_column_trap",
+        "card_quick_parry",
+        "card_swap_allies"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "card_row_slash",
+      "name": "Fendente in Riga",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "STARTER",
+      "target": { "type": "ALLY_SLOT", "requireRow": "FRONT" },
+      "effects": [
+        {
+          "type": "ALLY_ATTACK",
+          "pattern": "ROW",
+          "damageType": "PHYSICAL_SLASH"
+        }
+      ]
+    },
+    {
+      "id": "card_col_pierce",
+      "name": "Affondo in Colonna",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "STARTER",
+      "target": { "type": "ALLY_SLOT" },
+      "effects": [
+        {
+          "type": "ALLY_ATTACK",
+          "pattern": "COLUMN",
+          "damageType": "PHYSICAL_PIERCE"
+        }
+      ]
+    },
+    {
+      "id": "card_march_order",
+      "name": "Ordine di Marcia",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "STARTER",
+      "target": { "type": "ALLY_SLOT" },
+      "effects": [
+        {
+          "type": "APPLY_STATUS",
+          "status": "SPRINT",
+          "value": 1,
+          "durationTurns": 1
+        }
+      ]
+    },
+    {
+      "id": "card_blunt_strike",
+      "name": "Colpo Contundente",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "STARTER",
+      "target": { "type": "ALLY_SLOT_THEN_ENEMY_SLOT" },
+      "effects": [
+        {
+          "type": "ALLY_ATTACK_BONUS",
+          "pattern": "SINGLE",
+          "damageType": "PHYSICAL_BLUNT",
+          "bonusDamage": 4
+        }
+      ]
+    },
+    {
+      "id": "card_flaming_slash",
+      "name": "Fendente Infuocato",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "STARTER",
+      "target": { "type": "ALLY_SLOT_THEN_ENEMY_SLOT" },
+      "effects": [
+        {
+          "type": "ALLY_ATTACK_BONUS",
+          "pattern": "SINGLE",
+          "damageType": "MAGIC",
+          "element": "FIRE",
+          "bonusDamage": 3
+        }
+      ]
+    },
+    {
+      "id": "card_quick_parry",
+      "name": "Parata Rapida",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "STARTER",
+      "target": { "type": "ALLY_SLOT" },
+      "effects": [{ "type": "GAIN_SHIELD", "value": 6 }]
+    },
+    {
+      "id": "card_swap_allies",
+      "name": "Cambio Formazione",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "STARTER",
+      "target": { "type": "ALLY_SLOT_PAIR" },
+      "effects": [{ "type": "SWAP_ALLIES" }]
+    },
+    {
+      "id": "card_smoke_dodge",
+      "name": "Fumo e Sparisci",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "STARTER",
+      "target": { "type": "ALLY_SLOT" },
+      "effects": [
+        {
+          "type": "APPLY_STATUS",
+          "status": "DODGE",
+          "value": 1,
+          "durationHits": 1
+        }
+      ]
+    },
+    {
+      "id": "card_lonewolf_focus",
+      "name": "Agire in Solitario",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "STARTER",
+      "target": { "type": "COMMANDER_ONLY" },
+      "effects": [
+        { "type": "REMOVE_DEBUFFS", "count": 1 },
+        { "type": "GAIN_SHIELD", "value": 4 }
+      ]
+    },
+    {
+      "id": "card_hook_pull",
+      "name": "Gancio",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "STARTER",
+      "target": { "type": "ENEMY_SLOT" },
+      "effects": [
+        { "type": "PULL_TO_FRONT_SAME_COLUMN" },
+        {
+          "type": "APPLY_STATUS_IF",
+          "status": "STUN",
+          "value": 1,
+          "durationTurns": 1,
+          "condition": "TARGET_WAS_BACK_ROW"
+        }
+      ]
+    },
+    {
+      "id": "card_coordinated_assault",
+      "name": "Assalto Coordinato",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "STARTER",
+      "target": { "type": "COLUMN" },
+      "effects": [
+        {
+          "type": "ALLIES_IN_COLUMN_ATTACK",
+          "pattern": "SINGLE",
+          "damageType": "PHYSICAL_SLASH"
+        }
+      ]
+    },
+    {
+      "id": "card_vine_column",
+      "name": "Rampicanti del Bosco",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "STARTER",
+      "target": { "type": "COLUMN" },
+      "effects": [
+        {
+          "type": "DEAL_DAMAGE",
+          "pattern": "COLUMN",
+          "damageType": "MAGIC",
+          "element": "EARTH",
+          "value": 2
+        },
+        {
+          "type": "APPLY_STATUS",
+          "pattern": "COLUMN",
+          "status": "SLOW",
+          "value": 1,
+          "durationTurns": 1
+        }
+      ]
+    },
+    {
+      "id": "card_column_trap",
+      "name": "Trappola di Colonna",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "STARTER",
+      "target": { "type": "COLUMN" },
+      "effects": [{ "type": "PLACE_TRAP", "trapId": "trap_column_snare" }]
+    },
+    {
+      "id": "rwd_push_front",
+      "name": "Spinta in Fronte",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "COMMON",
+      "target": { "type": "ALLY_SLOT" },
+      "effects": [
+        { "type": "MOVE_ALLY", "toRow": "FRONT" },
+        {
+          "type": "APPLY_STATUS",
+          "status": "ATK_UP",
+          "value": 2,
+          "duration": "WHILE_IN_FRONT"
+        }
+      ]
+    },
+    {
+      "id": "rwd_forest_cover",
+      "name": "Copertura del Bosco",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "COMMON",
+      "target": { "type": "ALLY_TEAM" },
+      "effects": [{ "type": "GAIN_SHIELD", "pattern": "BACK_ROW", "value": 4 }]
+    },
+    {
+      "id": "rwd_forced_march",
+      "name": "Marcia Forzata",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "COMMON",
+      "target": { "type": "ALLY_SLOT" },
+      "effects": [
+        {
+          "type": "APPLY_STATUS",
+          "status": "SPRINT",
+          "value": 2,
+          "durationTurns": 1
+        }
+      ]
+    },
+    {
+      "id": "rwd_iron_fang",
+      "name": "Zanna di Ferro",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "COMMON",
+      "target": { "type": "ALLY_SLOT_THEN_ENEMY_SLOT" },
+      "effects": [
+        {
+          "type": "ALLY_ATTACK_BONUS",
+          "pattern": "SINGLE",
+          "damageType": "PHYSICAL_BLUNT",
+          "bonusDamage": 2
+        }
+      ]
+    },
+    {
+      "id": "rwd_oil_bottle",
+      "name": "Bottiglia d’Olio",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "COMMON",
+      "target": { "type": "ENEMY_SLOT" },
+      "effects": [
+        {
+          "type": "APPLY_STATUS",
+          "status": "WEAKNESS",
+          "value": 25,
+          "durationTurns": 2,
+          "params": { "element": "FIRE" }
+        }
+      ]
+    },
+    {
+      "id": "rwd_thrown_torch",
+      "name": "Torcia Gettata",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "COMMON",
+      "target": { "type": "ENEMY_SLOT" },
+      "effects": [
+        {
+          "type": "DEAL_DAMAGE",
+          "pattern": "SINGLE",
+          "damageType": "MAGIC",
+          "element": "FIRE",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "rwd_snare",
+      "name": "Trappola a Laccio",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "COMMON",
+      "target": { "type": "ENEMY_SLOT" },
+      "effects": [
+        {
+          "type": "APPLY_STATUS",
+          "status": "SLOW",
+          "value": 2,
+          "durationTurns": 1
+        }
+      ]
+    },
+    {
+      "id": "rwd_shoulder_bash",
+      "name": "Carica di Spalla",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "COMMON",
+      "target": { "type": "ENEMY_SLOT" },
+      "effects": [
+        {
+          "type": "SHIFT_ENEMY_COLUMN",
+          "direction": "LEFT_OR_RIGHT_IF_POSSIBLE"
+        },
+        {
+          "type": "DEAL_DAMAGE",
+          "pattern": "SINGLE",
+          "damageType": "PHYSICAL_BLUNT",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "rwd_give_rapid",
+      "name": "Rintocco di Guerra",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "COMMON",
+      "target": { "type": "ALLY_SLOT" },
+      "effects": [
+        { "type": "APPLY_TRAIT_TEMP", "trait": "RAPIDO", "durationActions": 1 }
+      ]
+    },
+    {
+      "id": "rwd_feint",
+      "name": "Finta",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "COMMON",
+      "target": { "type": "ALLY_SLOT" },
+      "effects": [
+        {
+          "type": "APPLY_STATUS",
+          "status": "DODGE",
+          "value": 1,
+          "durationHits": 1
+        },
+        { "type": "DRAW", "value": 1 }
+      ]
+    },
+    {
+      "id": "rwd_dart_row",
+      "name": "Raffica di Dardi",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "COMMON",
+      "target": { "type": "ROW" },
+      "effects": [
+        {
+          "type": "DEAL_DAMAGE",
+          "pattern": "ROW",
+          "damageType": "PHYSICAL_PIERCE",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "rwd_cleanse",
+      "name": "Rimuovi Paura",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "COMMON",
+      "target": { "type": "ALLY_SLOT" },
+      "effects": [
+        { "type": "REMOVE_STATUSES", "statuses": ["STUN", "SLOW"], "count": 1 }
+      ]
+    },
+
+    {
+      "id": "rwd_double_order",
+      "name": "Ordine Doppio",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "UNCOMMON",
+      "target": { "type": "SELF" },
+      "effects": [
+        {
+          "type": "ALLOW_SECOND_CARD_THIS_TURN",
+          "restriction": "SECOND_MUST_BE_COMMAND"
+        }
+      ]
+    },
+    {
+      "id": "rwd_row_coordinated",
+      "name": "Agguato Coordinato",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "UNCOMMON",
+      "target": { "type": "ROW" },
+      "effects": [
+        {
+          "type": "ALLIES_IN_ROW_ATTACK",
+          "pattern": "SINGLE",
+          "damageType": "PHYSICAL_SLASH"
+        }
+      ]
+    },
+    {
+      "id": "rwd_thorns_row",
+      "name": "Sentiero di Spine",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "UNCOMMON",
+      "target": { "type": "ROW" },
+      "effects": [{ "type": "PLACE_HAZARD", "hazardId": "hazard_thorns_row" }]
+    },
+    {
+      "id": "rwd_pack_roar",
+      "name": "Ruggito di Branco",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "UNCOMMON",
+      "target": { "type": "ALLY_TEAM" },
+      "effects": [
+        {
+          "type": "APPLY_STATUS",
+          "status": "ATK_UP",
+          "value": 1,
+          "durationActions": 1
+        }
+      ]
+    },
+    {
+      "id": "rwd_long_hook",
+      "name": "Gancio Lungo",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "UNCOMMON",
+      "target": { "type": "ENEMY_SLOT" },
+      "effects": [
+        {
+          "type": "MOVE_ENEMY_TO_COLUMN",
+          "column": "CENTER",
+          "preferFront": true
+        },
+        {
+          "type": "DEAL_DAMAGE",
+          "pattern": "SINGLE",
+          "damageType": "PHYSICAL_BLUNT",
+          "value": 2,
+          "condition": "MOVED"
+        }
+      ]
+    },
+    {
+      "id": "rwd_bark_armor",
+      "name": "Armatura di Corteccia",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "UNCOMMON",
+      "target": { "type": "ALLY_SLOT" },
+      "effects": [
+        { "type": "GAIN_SHIELD", "value": 8 },
+        {
+          "type": "APPLY_STATUS_IF",
+          "status": "RESIST",
+          "value": 50,
+          "durationTurns": 2,
+          "params": { "element": "EARTH" },
+          "condition": "TARGET_IN_BACK_ROW"
+        }
+      ]
+    },
+    {
+      "id": "rwd_coup",
+      "name": "Colpo di Stato",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "RARE",
+      "target": { "type": "ENEMY_SLOT" },
+      "effects": [
+        { "type": "SET_COUNTDOWN", "value": "BASE_PLUS_2" },
+        {
+          "type": "APPLY_STATUS",
+          "status": "STUN",
+          "value": 1,
+          "durationTurns": 1
+        }
+      ]
+    },
+    {
+      "id": "rwd_outlaw_speech",
+      "name": "Discorso del Fuorilegge",
+      "kind": "TACTIC",
+      "beats": 0,
+      "rarity": "RARE",
+      "target": { "type": "SELF" },
+      "effects": [
+        { "type": "SUMMON", "unitId": "unit_rebel_grunt", "count": 2 },
+        { "type": "ALLOW_RELOAD_NOW" }
+      ]
+    },
+    {
+      "id": "rwd_depot_fire",
+      "name": "Incendio del Deposito",
+      "kind": "COMMAND",
+      "beats": 1,
+      "rarity": "RARE",
+      "target": { "type": "ENEMY_HIGHEST_HP" },
+      "effects": [
+        {
+          "type": "DEAL_DAMAGE",
+          "pattern": "SINGLE",
+          "damageType": "MAGIC",
+          "element": "FIRE",
+          "value": 6
+        },
+        {
+          "type": "APPLY_STATUS",
+          "status": "BURN",
+          "value": 2,
+          "durationTurns": 2,
+          "condition": "TARGET_DIES"
+        }
+      ]
+    }
+  ],
+  "traps": [
+    {
+      "id": "trap_column_snare",
+      "trigger": "ENEMY_ACTS_IN_COLUMN",
+      "effects": [
+        {
+          "type": "DEAL_DAMAGE",
+          "pattern": "SINGLE",
+          "damageType": "PHYSICAL_PIERCE",
+          "value": 4
+        },
+        {
+          "type": "APPLY_STATUS",
+          "status": "SLOW",
+          "value": 1,
+          "durationTurns": 1
+        }
+      ]
+    }
+  ],
+  "hazards": [
+    {
+      "id": "hazard_thorns_row",
+      "trigger": "ENEMY_ENTERS_ROW",
+      "effects": [
+        {
+          "type": "DEAL_DAMAGE",
+          "pattern": "SINGLE",
+          "damageType": "MAGIC",
+          "element": "EARTH",
+          "value": 5
+        }
+      ]
+    }
+  ]
+}

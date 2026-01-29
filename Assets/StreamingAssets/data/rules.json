@@ -1,0 +1,49 @@
+{
+  "board": {
+    "rows": ["FRONT", "BACK"],
+    "cols": ["LEFT", "CENTER", "RIGHT"],
+    "allyGrid": "2x3",
+    "enemyGrid": "2x3"
+  },
+  "hand": {
+    "max": 7,
+    "drawOnCombatStart": 7
+  },
+  "beats": {
+    "tactic": 0,
+    "command": 1
+  },
+  "turn": {
+    "cardsPerTurn": 1,
+    "freeReposition": {
+      "enabled": true,
+      "mode": "DRAG_SWAP_UNLIMITED"
+    }
+  },
+  "reload": {
+    "enabled": true,
+    "triggerAfterCardsPlayed": 4,
+    "effect": "DISCARD_HAND_DRAW_TO_7_SHUFFLE_IF_NEEDED"
+  },
+  "lossCondition": {
+    "type": "COMMANDER_DEAD"
+  },
+  "actionOrder": {
+    "whenCountdownHitsZero": true,
+    "priority": [
+      { "faction": "ENEMY", "trait": "RAPIDO" },
+      { "faction": "ALLY", "trait": "RAPIDO" },
+      { "faction": "ENEMY", "trait": "NONE" },
+      { "faction": "ALLY", "trait": "NONE" }
+    ],
+    "slotSequence": [
+      "FRONT_LEFT",
+      "BACK_LEFT",
+      "FRONT_CENTER",
+      "BACK_CENTER",
+      "FRONT_RIGHT",
+      "BACK_RIGHT"
+    ]
+  },
+  "elements": ["FIRE", "WATER", "EARTH", "AIR", "LIGHT", "SHADOW"]
+}

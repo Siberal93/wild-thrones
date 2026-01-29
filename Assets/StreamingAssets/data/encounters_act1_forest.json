@@ -1,0 +1,173 @@
+{
+  "actId": "ACT_1_FOREST",
+  "biome": "FOREST",
+  "encounters": [
+    {
+      "id": "enc_forest_easy_1",
+      "tier": "EASY",
+      "waves": [
+        {
+          "turn": 1,
+          "spawn": [
+            "unit_cucciolo_scout",
+            "unit_cucciolo_scout",
+            "unit_corvo_araldo"
+          ]
+        },
+        {
+          "turn": 5,
+          "spawn": [
+            "unit_serpente_rovo",
+            "unit_serpente_rovo",
+            "unit_corvo_araldo"
+          ]
+        },
+        {
+          "turn": 9,
+          "spawn": [
+            "unit_unique_tasso_tagliagole",
+            "unit_cinghiale_guardia",
+            "unit_cervo_sentinella",
+            "unit_cucciolo_scout"
+          ]
+        }
+      ],
+      "victory": { "type": "DEFEAT_ALL" },
+      "notes": "Wave finale con unità unica a tema (tasso bandito/assassino del bosco)."
+    },
+    {
+      "id": "enc_forest_easy_2",
+      "tier": "EASY",
+      "waves": [
+        {
+          "turn": 1,
+          "spawn": ["unit_corvo_araldo", "unit_cucciolo_scout"]
+        },
+        {
+          "turn": 5,
+          "spawn": [
+            "unit_cinghiale_guardia",
+            "unit_cucciolo_scout",
+            "unit_corvo_araldo"
+          ]
+        },
+        {
+          "turn": 9,
+          "spawn": [
+            "unit_unique_cervo_stregato",
+            "unit_serpente_rovo",
+            "unit_tasso_scavatore",
+            "unit_cinghiale_guardia"
+          ]
+        }
+      ],
+      "victory": { "type": "DEFEAT_ALL" },
+      "notes": "Wave finale con unità unica a tema (cervo stregato/sentinella reale)."
+    },
+    {
+      "id": "enc_forest_medium_1",
+      "tier": "MEDIUM",
+      "waves": [
+        {
+          "turn": 1,
+          "spawn": [
+            "unit_cinghiale_guardia",
+            "unit_corvo_araldo",
+            "unit_cucciolo_scout"
+          ]
+        },
+        {
+          "turn": 5,
+          "spawn": [
+            "unit_serpente_rovo",
+            "unit_serpente_rovo",
+            "unit_cervo_sentinella",
+            "unit_corvo_araldo"
+          ]
+        },
+        {
+          "turn": 9,
+          "spawn": [
+            "unit_unique_corvo_inquisitore",
+            "unit_cucciolo_scout",
+            "unit_cinghiale_guardia",
+            "unit_tasso_scavatore",
+            "unit_cervo_sentinella"
+          ]
+        }
+      ],
+      "victory": { "type": "DEFEAT_ALL" },
+      "notes": "Wave finale con unità unica a tema (corvo inquisitore del capitano)."
+    },
+    {
+      "id": "enc_forest_elite_1",
+      "tier": "ELITE",
+      "waves": [
+        {
+          "turn": 1,
+          "spawn": [
+            "unit_cinghiale_guardia",
+            "unit_cinghiale_guardia",
+            "unit_corvo_araldo"
+          ]
+        },
+        {
+          "turn": 5,
+          "spawn": [
+            "unit_serpente_rovo",
+            "unit_cervo_sentinella",
+            "unit_corvo_araldo",
+            "unit_cucciolo_scout"
+          ]
+        },
+        {
+          "turn": 9,
+          "spawn": [
+            "unit_elite_zanna_rossa",
+            "unit_cinghiale_guardia",
+            "unit_cervo_sentinella",
+            "unit_corvo_araldo"
+          ]
+        }
+      ],
+      "victory": { "type": "DEFEAT_ALL" },
+      "notes": "Elite finale: Zanna Rossa (unità unica)."
+    },
+    {
+      "id": "enc_forest_boss_tasso",
+      "tier": "BOSS",
+      "waves": [
+        {
+          "turn": 1,
+          "spawn": [
+            "unit_cucciolo_scout",
+            "unit_cucciolo_scout",
+            "unit_corvo_araldo"
+          ]
+        },
+        {
+          "turn": 5,
+          "spawn": [
+            "unit_cinghiale_guardia",
+            "unit_serpente_rovo",
+            "unit_corvo_araldo"
+          ]
+        },
+        {
+          "turn": 9,
+          "spawn": [
+            "unit_boss_tasso_ferronero",
+            "unit_cinghiale_guardia",
+            "unit_cinghiale_guardia"
+          ]
+        }
+      ],
+      "victory": {
+        "type": "KILL_UNIT",
+        "unitId": "unit_boss_tasso_ferronero",
+        "onVictory": "FLEE_ALL_ENEMIES"
+      },
+      "notes": "Boss finale entra in wave 3; alla sua morte tutti fuggono."
+    }
+  ]
+}

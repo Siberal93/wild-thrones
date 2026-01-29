@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "files": {
+    "rules": "rules.json",
+    "cards": "cards.json",
+    "units": "units.json",
+    "relics": "relics.json",
+    "cove_upgrades": "cove_upgrades.json",
+    "encounters_act1": "encounters_act1_forest.json"
+  }
+}
