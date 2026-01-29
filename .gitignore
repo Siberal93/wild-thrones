@@ -26,3 +26,6 @@ UserSettings/
 
 # Unity UI schema (generated)
 UIElementsSchema/
+
+mono_crash*.json
+crash*.json
