@@ -3,7 +3,7 @@ using UnityEngine.InputSystem; // <—
 
 public class UnitInputRouter : MonoBehaviour
 {
-    [SerializeField] private float longPressSeconds = 0.4f;
+    [SerializeField] private float dragDelaySeconds = 0.4f;
 
     UnitRuntime pressed;
     float pressedTime;
@@ -16,8 +16,14 @@ public class UnitInputRouter : MonoBehaviour
 
     void Update()
     {
-        // DOWN (mouse o touch)
-        if (PointerDownThisFrame())
+        var mouse = Mouse.current;
+        if (mouse == null) return;
+
+        var bb = BoardBootstrap.Instance;
+        if (bb == null) return;
+
+        // DOWN
+        if (mouse.leftButton.wasPressedThisFrame)
         {
             var rt = HitUnitUnderPointer();
             if (rt != null)
@@ -26,38 +32,62 @@ public class UnitInputRouter : MonoBehaviour
                 pressedTime = Time.time;
                 longFired = false;
 
-                Debug.Log($"[DOWN] {pressed.displayName}#{pressed.instanceId} slot={pressed.slotKey}");
+                // mostra card subito
+                Vector2 sp = bb.GetOppositeGridCenterScreen(pressed);
+                bb.CardView?.Show(rt, sp);
+
+                Debug.Log($"[DOWN] {pressed.displayName}#{pressed.instanceId} slot={pressed.slotKey} (CARD SHOW)");
             }
         }
 
-        // HOLD: se sto premendo su qualcosa e non ho ancora triggerato long
-        if (pressed != null && !longFired && PointerIsPressed())
+        // HOLD
+        if (pressed != null && mouse.leftButton.isPressed)
         {
-            float t = Time.time - pressedTime;
-
-            // debug ogni ~0.2s (non spam)
-
-            if (t >= longPressSeconds)
+            // se non stiamo già dragando, controlla se “armare” il drag
+            if (!longFired)
             {
-                longFired = true;
-                Debug.Log($"[LONG] {pressed.displayName}#{pressed.instanceId} t={t:0.00}/{longPressSeconds:0.00}");
-                BeginDrag(pressed);
-            }
-        }
+                float held = Time.time - pressedTime;
 
-        // DRAG: una volta iniziato, aggiorna OGNI frame finché è premuto
-        if (dragging != null && PointerIsPressed())
-        {
-            UpdateDrag();
+                // drag solo se: held >= 0.4s E pointer fuori dallo slot
+                if (held >= dragDelaySeconds)
+                {
+                    var w = PointerWorld();
+                    bool inside = bb.IsWorldInsideSlot(pressed.slotKey, w);
+
+                    if (!inside)
+                    {
+                        longFired = true;
+
+                        // nascondi card quando parte il drag (scelta UX: così non copre)
+                        bb.CardView?.Hide();
+
+                        BeginDrag(pressed);
+                        Debug.Log($"[DRAG ARMED] {pressed.displayName}#{pressed.instanceId} (left slot after {held:0.00}s)");
+                    }
+                    else
+                    {
+                        // debug utile per capire “perché non draga”
+                        // (commentalo se spam)
+                        // Debug.Log($"[HOLD] {pressed.displayName} inside slot -> no drag yet ({held:0.00}s)");
+                    }
+                }
+            }
+
+            // se stiamo dragando, muovi
+            if (dragging != null && PointerIsPressed())
+            {
+                UpdateDrag();
+            }
         }
 
         // UP
-        if (PointerUpThisFrame())
+        if (mouse.leftButton.wasReleasedThisFrame)
         {
+            // se NON abbiamo dragato -> chiudi card
             if (pressed != null && !longFired)
             {
-                Debug.Log($"[TAP] {pressed.displayName}#{pressed.instanceId}");
-                pressed.OnTap();
+                bb.CardView?.Hide();
+                Debug.Log($"[UP] (CARD HIDE) {pressed.displayName}#{pressed.instanceId}");
             }
 
             pressed = null;
@@ -66,6 +96,7 @@ public class UnitInputRouter : MonoBehaviour
                 EndDrag();
         }
     }
+
 
     UnitRuntime HitUnitUnderPointer()
     {
@@ -82,6 +113,7 @@ public class UnitInputRouter : MonoBehaviour
 
         Vector2 world = PointerWorld();
         dragOffset = Vector3.zero;
+        UpdateDrag(); // così snap immediato
 
         Debug.Log($"[DRAG START] {dragging.displayName}#{dragging.instanceId}");
 

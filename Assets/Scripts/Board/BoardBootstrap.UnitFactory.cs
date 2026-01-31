@@ -28,7 +28,6 @@ public partial class BoardBootstrap
 
         var rt = go.AddComponent<UnitRuntime>();
         rt.InitFromJson(unit, isEnemy);
-        rt.EnsureCollider(r);
         rt.slotKey = slotKey;
         rt.slotAbbrev = AbbrevSlot(slotKey);
 

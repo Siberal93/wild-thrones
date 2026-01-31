@@ -4,8 +4,16 @@ public partial class BoardBootstrap
 {
     Vector2 SlotToWorld12(Vector2 anchor, int row, int col)
     {
-        // col 0..3 da sinistra a destra
-        float x = anchor.x + (col - 1.5f) * (cellSize + colGap);
+        // col 0..3 da sinistra a destra -0.8 + (-1.5 * 3) = -5.3 -2.3 2.3 5.3 --- -4.5 -1.5 1.5 4.5
+        float x;
+        if (col < 2)
+        {
+            x = anchor.x + (col - 1.5f) * (cellSize + colGap);
+        }
+        else
+        {
+            x = anchor.x + (col - 1.5f) * (cellSize + colGap) + 1.6f;
+        }
 
         // row 0..2 dall'alto verso il basso
         float y = anchor.y + (1 - row) * (cellSize + rowGap);

@@ -13,6 +13,7 @@ public class UnitRuntime : MonoBehaviour
     public int hp;
     public int cdBase;
     public int cd;
+    public int atk; // <-- aggiungi
 
     public HashSet<string> traits = new HashSet<string>();
 
@@ -38,6 +39,7 @@ public class UnitRuntime : MonoBehaviour
 
         hp = unit["stats"]?["hp"]?.Value<int>() ?? 0;
         cdBase = unit["stats"]?["cdBase"]?.Value<int>() ?? 0;
+        atk = unit["stats"]?["atk"]?.Value<int>() ?? 0; // se nel json non esiste, resta 0
         cd = cdBase;
 
         instanceId = ++_seq;
