@@ -4,6 +4,7 @@ using System;
 public class CardDef
 {
     public string id;
+    public string code;
     public string name;
     public string desc;
     public int cost;
